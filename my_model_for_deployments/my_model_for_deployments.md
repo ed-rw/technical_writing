@@ -17,14 +17,14 @@ the very least writing will let me harp on a subject I enjoy for a little while.
 
 ### The Model
 
-The way I see it there are three major components that are involved in any deployment:
+The way I see it there are three major components involved in any deployment:
 - Source code
 - Artifacts ("Something that is Deployable")
 - A running process or processes on a machine
 
 Deciding what plays the role of each of these components in a particular system
 makes it much easier to frame an understanding of how deployments occur for
-that system. It should be noted that sometimes the source code and artifacts
+that system. It should be noted that the source code and artifacts
 components may be the same "thing".
 
 ### Source Code
@@ -33,7 +33,7 @@ The source code is fairly self explanatory, it is the code that you or other
 developers are writing. Hopefully to make the world a better place. It may be
 Python or C or something else, but generally it's going to be saved as files on
 a machine somewhere. Most developers and teams these days will be using some
-sort of version control system (_e.g._ git) and having a central location that
+sort of version control system (_e.g._ git) in a central location that
 can be used to share that code between machines and, by extension, other people.
 Though I do remember the days when I was just starting to code and just had a
 set of files saved in a folder that I occasionally backed up to an external
@@ -57,23 +57,23 @@ starting point.
 
 The next thing to get a handle on is what is it that is actually run by the
 system, how is that created, and where is it stored. I use the word artifact
-here, as this is usually the artifact of some build process, but it is really
+here as this is usually the artifact of some build process, but it is really
 that which is deployed (I've debated avoiding using "artifact" and just using
 "deployable", but that seems a bit vague).
 
 Are you just running some Python code? Your artifact may just be the set of
 source code files in the latest commit on the master branch (_i.e._ the source
 code previously identified). The artifact may be the binary that is compiled or
-a container image that is built. The goal is to determine what it is that is
-going to be run and what, if any, are the steps taken produce it.
+a container image that is built. The goal is to determine what is
+going to be run, and what, if any, steps are taken to produce it.
 
 The artifact that is produced will most likely be stored in a repository
-somewhere, and ideally versioned. Continuing the example from above with Python
+somewhere, and ideally, versioned. Continuing the example from above with Python
 files, you could consider GitHub the repository and the specific commit id the
 version. Or maybe ECR or Dockerhub is your repository for the container image
 and tags are used for versioning.
 
-I like the think of the artifacts as a check point between source code and
+I like the think of the artifacts as a checkpoint between source code and
 running code. Going from source code to a running process can seem like a long
 way, but having a well defined stop in the middle makes the journey seem not
 quite as long. What artifacts are and how they are managed can give you a lot
@@ -84,7 +84,7 @@ deployments).
 
 ### A running process or processes on a machine
 
-The ultimate goal of most code that is written is that it is run by a machine,
+The ultimate goal of most code that is written is to be run by a machine,
 somewhere. This code is going to be executed by a CPU, GPU, etc. within the
 context of a process or group of processes. The last step in a deployment
 is creating or updating the process(es) that run the artifact.
@@ -92,7 +92,7 @@ is creating or updating the process(es) that run the artifact.
 Knowing where these processes are running and what system requirements
 they have is very useful in understanding this component of the deployment. I've
 always enjoyed having the ability to get on the machine running my code and to
-watch the running process in `top`, or to look at the ports that is has open and
+watch the running process in `top`, or to look at the open ports and
 inspect the network traffic with WireShark. I think that gives you a good
 understanding of how your code is acting in and interacting with the environment
 in which it's run. While this isn't always possible, either due to
@@ -117,32 +117,31 @@ how code fulfills its purpose.
 
 I'm going to go over a few scenarios and apply the model to them.
 
-First, let's consider the situation that you're editing some Python files
+First, let's consider a situation where you're editing some Python files
 on the machine that is running the Python interpreter and executing those files.
-Now hopefully you're not doing this in production, but I think this is a common
-situation for development environments. In this scenario your source code is
-this set of Python files, your artifacts are the Python files as well (maybe
-versioned through a series of small commits on your feature branch), and your
-running process is the Python interpreter, which running on your laptop. The
-steps for a "deploy" are to save your code, maybe make a small commit, and then
-to run or restart the Python interpreter.
+Hopefully you're not doing this in production, but I think this is a common
+situation for development environments. In this scenario, both  your source
+code and artifacts are the Python files, (maybe versioned through a series of
+small commits on your feature branch), and your running process is the Python
+interpreter. The steps for a "deploy" are to save your code, maybe make a small
+commit, and then to run or restart the Python interpreter.
 
 The second scenario is that maybe you're writing code on your machine (using a
-process like above to run/test it) and to move it to production you make a
+process like above to run/test it), and to move it to production you make a
 commit to master, push that to GitHub, SSH into your production server, do a
 `git pull` to pull that latest code onto the server, and then send a SIGHUP to
 your uWSGI master process to gracefully reload your application. Your source
 code is once again the set of Python files, but in this situation the "official"
 source code is stored on GitHub. Your artifact repository is GitHub and the
-versioning is done through commits. To get the code you just wrote on your
-server you're using git to download the latest files and then instructing uWSGI
+versioning is done through commits. To get the code you just wrote to your
+server, you're using git to download the latest files and then instructing uWSGI
 to gracefully restart the group of processes running your application code to
 run the latest and greatest.
 
 This last scenario is an example of a more "modern" process. Similar to the
-second scenario you write your code on your machine, and push it to GitHub on a
+second scenario, you write your code on your machine and push it to GitHub on a
 short-lived feature branch when you're done. After a teammate reviews your code
-you squash merge it on to the master branch. A CI/CD system sees the new commit,
+you squash merge it to the master branch. A CI/CD system sees the new commit,
 pulls the code to a server, runs the tests (which pass, yay!), builds a new
 Docker container image, pushes it to ECR, and then runs Terraform code to create
 new task definitions and updates your ECS service to use the new task definition.
