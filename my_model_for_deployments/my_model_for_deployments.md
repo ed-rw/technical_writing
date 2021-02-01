@@ -3,13 +3,16 @@
 ### Introduction
 
 Thought it would be nice to explain and share a simple model I use to
-understand how source code becomes a running process (a "deployment") in a system.
+understand how source code becomes a running process (a "deployment") in a
+system. You may find this model as a useful way to structure conversations about
+your CI/CD pipelines when onboarding team members, talking to other teams, or as
+a way to take stock of and improve what you are currently doing.
 
 I believe I developed this understanding while building continuous
 deployment tooling for the team I was on in 2016 and discovered its usefulness
 while serving on a department committee investigating how to spread CI/CD
 practices and tooling to other teams. I've also found the model useful in
-discussions with friends about how their deployments work as well.
+discussions with friends about how their deployments work.
 
 Not sure if I picked this up reading somewhere or if I came to it on my own.
 This may seem like common knowledge to some, or maybe it will be insightful. At
@@ -51,7 +54,10 @@ Nailing down exactly where and how to access the files that contain the source
 code is an important step in determining how that code is going to become a
 running process. It's incredibly hard to navigate if you don't know where you're
 starting from, and where the right set of files is located is essentially your
-starting point.
+starting point. If there is any uncertainty among team members when determining
+what files make up the latest or current production source code or if the answer
+is complicated (_e.g._ you hear "it depends" somewhere in there), that should be
+considered a huge red flag.
 
 ### Artifacts ("Something that is Deployable")
 
@@ -70,7 +76,7 @@ going to be run, and what, if any, steps are taken to produce it.
 The artifact that is produced will most likely be stored in a repository
 somewhere, and ideally, versioned. Continuing the example from above with Python
 files, you could consider GitHub the repository and the specific commit id the
-version. Or maybe ECR or Dockerhub is your repository for the container image
+version. Or maybe ECR or Dockerhub is your repository for the container image,
 and tags are used for versioning.
 
 I like the think of the artifacts as a checkpoint between source code and
@@ -120,7 +126,7 @@ I'm going to go over a few scenarios and apply the model to them.
 First, let's consider a situation where you're editing some Python files
 on the machine that is running the Python interpreter and executing those files.
 Hopefully you're not doing this in production, but I think this is a common
-situation for development environments. In this scenario, both  your source
+situation for development environments. In this scenario, both your source
 code and artifacts are the Python files, (maybe versioned through a series of
 small commits on your feature branch), and your running process is the Python
 interpreter. The steps for a "deploy" are to save your code, maybe make a small
