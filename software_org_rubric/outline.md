@@ -1,5 +1,5 @@
 
-Management
+Org Effectiveness
 
 - Communication - Information Transfer
 - Communication - Feedback
