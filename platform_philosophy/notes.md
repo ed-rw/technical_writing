@@ -1,0 +1,3 @@
+How hard is it to switch out your platform implementation for a different implementation? say one impl for prod, a different one for dev == a good platform abstraction == modular platform
+arch without end state 24:00minutes “isolate failure domains” (design rules the power of modularity baldwin and clark)
+A modular platform uses interfaces to allow for substitutable components, which creates better boundaries, single responsibilities, and allows for more options (think of these options as financial options) for implementations now and in the future (AKA a better design). “each module option has an expected value. when you analyze a system split into N modules the value of the system increases as the sqrt of N”
