@@ -25,18 +25,19 @@ here.
 
 ### Communication
 
-I originally had communication as just one criteria, but it feels too
-important for that. I've broken it into two pieces, information transfer and
-feedback. Organizations are all about getting groups of people to work together, and
+I originally had communication as just one criteria, but it feels too important
+for that. I've broken it into two pieces, information transfer and feedback.
+Organizations are all about getting groups of people to work together, and
 communication between people is the most fundamental need in order for that to
 happen.
 
 Communication in an organization is something that has been written about
 extensively, and by people much smarter than me. This is also something not
-unique to software engineering organizations, all groups of human being face
-this issue. Continually asking the question of how organizations can be more
-effective and efficient with their communications is one of the best things a
-company or team can do to be successful.
+unique to software engineering organizations, all groups of human beings (and
+really even animals) need communication in order to work together. Continually
+asking the question of how organizations can be more effective and efficient
+with their communications is one of the best things a company or team can do to
+be successful.
 
 #### Information Transfer
 
@@ -102,7 +103,7 @@ giving affirmative feedback is important, it still needs to be a specific,
 timely, and actionable.
 
 Organizations that are doing well with giving feedback are going to be providing
-individuals with good, structured feedback for different sources (_e.g._ direct
+individuals with good, structured feedback from different sources (_e.g._ direct
 managers, peers, skip-level managers) on a regular basis. Organizations that are
 doing poorly with this are not going to be providing individuals feedback at
 all.
@@ -113,17 +114,17 @@ all.
 
 Onboarding effectiveness is a [key
 part](https://www.shrm.org/resourcesandtools/hr-topics/talent-acquisition/pages/onboarding-key-retaining-engaging-talent.aspx)
-of employee retention. I've broken onboarding into two parts here - to the
-company and to the system. Here I'm merely talking about how smooth the process
+of employee retention. With onboarding I'm thinking about how smooth the process
 is for a new employee to get everything they need to get their job done, receive
-their compensation, and hopefully feel like they fit in to the team. Examples of
-things that can improve this process are: ensuring there is a clear point of
-contact and schedule for what they should do on their first day, making sure
-their accounts for various systems are set up properly, having someone on hand
-to help with registration for benefits (and a plus is using software that makes
-this dead simple), and scheduling time to get to know, on a personal level,
-their manager and the people they are going to be working with. Ideally all
-these things are done with the first couple weeks of a new hire's start date.
+their compensation, and feel like they fit in to and contribute to the team.
+Examples of things that can improve this process are: ensuring there is a clear
+point of contact and schedule for what they should do on their first day, making
+sure their accounts for various systems are set up properly, having someone on
+hand to help with registration for benefits (and a plus is using software that
+makes this dead simple), and scheduling time to get to know, on a personal
+level, their manager and the people they are going to be working with. Ideally
+all these things are done with the first couple weeks of a new hire's start
+date.
 
 Joining a new company is big life decision for most people, they are already
 going to be somewhat stressed. Anything that can be done to not add to this
@@ -165,12 +166,12 @@ is being intentional about the isomorphism (graph symmetry) your organizational
 structure and technical architecture are inclined to display.
 
 Building any piece of software is a learning process in which highly specific
-information is acquired by the team writing the software.It is difficult, if not
-impossible, to effectively or efficiently hand-off this knowledge. Teams and the
-work they do should be structured around keeping that learned information with
-the software over the course of that software's lifetime. The best way to do
-this is to organize teams around software products that they build, maintain,
-and operate.
+information is acquired by the team writing the software. It is difficult, if
+not impossible, to effectively or efficiently hand-off this knowledge. Teams and
+the work they do should be structured around keeping that learned information
+with the software over the course of that software's lifetime. The best way to
+do this is to organize teams around software products that the team builds,
+maintains, and operates.
 
 Companies that excel at team organization are going to have clear lines of
 ownership between teams and departments, and enable autonomy at the right
@@ -243,8 +244,12 @@ levels of the organization ([strategy vs
 tactics](https://diogomonica.com/2018/10/07/a-pirates-take-on-strategy-vs-tactics/)).
 This is why we can talk about the vision for a single team, or for a department.
 
-Is this strategy communicated? Is it coherent? Can teams connect the work they
-are doing to the vision for their team, and for the company?
+If you can answer yes to the following questions, I would consider the vision
+for the company to be in a good place.
+* Is the strategy communicated?
+* Is it coherent?
+* Can teams connect the work they are doing to the vision for their team, and
+for the company?
 
 #### Developer Input
 
@@ -255,6 +260,11 @@ motivation they may have for being product minded. Now that said, engineers
 should not be the _only_ source of new product ideas and features, but they
 should be allowed, and encouraged, to provide input on the product roadmap and
 strategy.
+
+Companies that are doing well with this are going to regularly solicit
+developers for their input on the product, and listen to the feedback they
+provide. Companies doing poorly here will not provide time for developers to
+give product feedback, and will actively discourage them if they do provide it.
 
 #### Measurement & Metrics
 
@@ -280,26 +290,119 @@ feature you don't use).
 
 #### Architecture
 
-#### Code and Systems Quality
+The last element of the [BAPO
+model](https://janbosch.com/blog/index.php/2017/11/25/structure-eats-strategy/).
+Architecture is the technologies that are used, and how they are composed, to
+deliver the product vision for the business. As mentioned, Conway's Law imposes
+a symmetry between the structure of the organization and the technical
+architecture of the system.
 
-#### Onboarding to the System and Code Base
+I think my favorite definition of architecture is given by Martin Fowler -
+roughly ["architecture is the things that are both important and hard to change
+later on"](https://kylecordes.com/2015/fowler-software-architecture) (Fowler
+credits this definition to Ralph Johnson in a [great
+article](https://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf)). From
+this comes a corollary that "the best designs are those which minimize the
+important things that are hard to change later on". Fowler also discusses
+architecture as a social construct, which means it is something that is going to
+be directly affected by the ability of the organization to effectively
+communicate.
 
-#### Developer Experience and Productivity
+So how do you know if you have a good architecture? Unsurprisingly the answer is
+similar to the answer for how you know if you have a good team structure. Clear
+dependencies, "loose coupling" ([at the right
+levels](https://martinfowler.com/articles/strong-weak-arch.html)), and
+extensibility of components are all indicators of good architecture. Unnecessary
+complexity, "spooky action at a distance", inability to accommodate changes in
+requirements are all indicators of poor architecture.
 
-#### "Interesting" Problems
+#### Code and Systems Quality, Developer Experience and Productivity
 
-#### Excellence
+I originally had code and system quality, and developer experience and
+productivity as two separate things. But in working on them I've decided that I
+think they are different ways of looking at the same thing.
 
-< are the individuals in the org strong engineers, "dont be the smartest guy in
-the room", "A-team players want to play with other A-team players" >
+I view code and systems quality as a separate thing from product quality, and
+when I complain about the "quality" of the code or system I'm working in, what
+I'm really complaining about is the experience I'm having as a developer
+contributing to that code base. Most of the suggestions you see to make "quality
+code" are suggestions that ostensibly make it easier to comprehend and
+contribute to that code base. In other words, to improve the experience of the
+developers working in that code base.
 
-#### Culture
+The difference between these two views lies in who/what determines quality.
+Using the developer experience inherently democratizes the idea of quality.
+Generally when talking just about code quality more senior engineers or
+"architects" dominate the discussion. Or tools like linters and cyclomatic
+complexity algorithms are used. While the opinions of experienced individuals
+are important and these tools can provide useful signals, ultimately what is
+most important here is the qualitative answers to the question of "As a
+developer do you feel happy and productive working in this code or system?".
 
-< devops, agile software development values held, ci/cd principles >
+I'm deliberately avoiding asserting what I consider my opinions are of quality
+code, even opinions I think that are held by most engineers. For instance, it is
+pretty common to consider good test coverage as part of code quality. While I
+would (now) generally consider a code base without of tests to be of low
+quality, I recognize that there are teams (or my former self) that have built
+code bases without tests and that were happy with the quality of that code and
+their ability to safely contribute to it.
+
+The only property of a system that I think is somewhat important as a measure of
+quality for both codebases and systems is how quickly individuals you have hired
+can be onboarded to the system, _i.e._ how long it takes them to start
+contributing. This directly relates to the developer experience and
+productivity. The reason I say "individuals you have hired" is note that if you
+want to have a complex code base and/or system, you're going to need to hire
+(and pay for) very intelligent individuals if onboarding is to happen quickly
+and smoothly. If you don't want to always have to find and pay for "rockstars"
+and PhDs, it is worth focusing on having a simpler code base and system that
+facilitates easy onboarding.
+
+It is worth noting that using this idea of quality, the quality of a code base
+and system can change without any changes to the code itself, but with changes
+to the team contributing to the code. This is why "legacy code and systems" is
+often a euphemism for "poor quality". Quality is something that needs to be
+actively managed, both as contributions are made and as team members are added.
+
+#### Opportunities for Growth
+
+This is a bit of a funny criteria to add, especially in the sense that it is
+fairly subjective, but it is important to me nonetheless. I originally had this
+criteria as two separate criteria, "interesting problems" and "engineering
+excellence". I think the underlying principal of those initial criteria was that
+the organization presents opportunities for growth to individuals within the
+organization. Individuals may not capitalize on these opportunities, but I think
+to be a top notch organization the opportunities must be present for those that
+wish to capitalize.
+
+One component of growth opportunities is how challenging and engaging for
+engineers the types of problems they are working on are. Churning out CRUD apps
+all day is going to be inherently less engaging (at least for me) than scaling
+systems with hard computer science problems at their core. This is not to say
+that every project or task every day should only consist of novel, hard
+problems, but engineers do need opportunities to work on interesting problems so
+they can grow.
+
+It should also be noted that when not given real, challenging problems some
+engineers have a tendency to invent problems. This is a source of unnecessary
+complexity that contributes to bad architecture, poor developer experience, and
+inability to deliver business value.
+
+["If you’re the smartest person in the room, you are in the wrong
+room."](https://www.forbes.com/sites/theyec/2022/02/10/why-you-never-want-to-be-the-smartest-person-in-the-room/)
+
+You also want your engineers working in a organization they view as composed
+of other individuals that excel at their work. Working with people that level
+them up, that they can learn from. Encouraging more senior individuals to coach
+more junior individuals, and building forums for senior individuals to learn
+from  each other are great way to present opportunities for engineers to become
+better at their craft. An organization with a lot of individuals not interested
+in continuing to learn new things, or not interested in coaching and learning
+from others can create a culture that stunts engineers around them.
 
 ### Compensation
 
-I think most of these criteria are fairly intuitive, so I've left out explicit
+I think most of these criteria are fairly subjective, so I've left out explicit
 definitions of what "good" looks like.
 
 Obviously things like high compensation and good benefits will make people more
@@ -345,15 +448,16 @@ or at least me) end up somewhat stuck with what you get.
 
 Work/life balance often gets rolled up in to benefits, but I think it is
 something to consider separately as there are other aspects of it aside from
-"unlimited PTO" and "flexible work hours". The pandemic managed to move working
-remotely from being a benefit to being a way of doing business now (one silver
-lining from COVID). What I'm thinking about with work/life balance involves the
-paid time off, but also things like how often do I have to work outside my
-desired work hours? How easy is it to disconnect from work?
+"unlimited PTO" and "flexible work hours". The COVID-19 pandemic managed to move
+working remotely from being a benefit to being a way of doing business now (one
+silver lining from COVID). What I'm thinking about with work/life balance
+involves the paid time off, but also things like how often do I have to work
+outside my desired work hours? How easy is it to disconnect from work?
 
-Now I have to talk about having engineers "on call" here. I view on call as a
+Now I have to mention having engineers "on call" here. I view on call as a
 necessary evil. It vastly improves the structure of teams and positively
 influences the the code and systems quality, but at best it is going to
-negatively affect work/lift balance and at worst it can destroy it.
-
-TODO: finish
+negatively affect work/lift balance and at worst it can destroy it.  I'm not
+going to give suggestions on how to handle this here (because I'd end up on a
+rant) but this tradeoff should be acknowledged and monitored by managers,
+product owners and technical leaders.
